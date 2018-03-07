@@ -1,7 +1,6 @@
 import React from "react";
 import "../CSS/detail_post.css";
 import "../CSS/bootstrap.css";
-import Post from "../JS/Post";
 
 const DetailPost = () => (
   <div className="detail_post">

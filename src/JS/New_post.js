@@ -1,8 +1,7 @@
 import React from "react";
 import "../CSS/bootstrap.css";
 import "../CSS/new_post.css";
-const fs = require("fs");
-
+var keys;
 const NewPost = () => (
   <div className="new_post">
     <h1>New post</h1>
@@ -32,6 +31,9 @@ export default NewPost;
 function posts() {
   let title = document.getElementById("titlu").value;
   let descript = document.getElementById("post_textare").value;
+  localStorage.setItem(title, descript);
+  keys = Object.keys(localStorage);
+  document.getElementById("post_content").reset();
 }
 function cancel() {
   document.getElementById("post_content").reset();

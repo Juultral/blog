@@ -2,24 +2,12 @@ import React from "react";
 import "../CSS/bootstrap.css";
 import "../CSS/post.css";
 
-const Post = () => (
+const Post = props => (
   <div className="post">
     <div className="content">
-      <h2>Titlu</h2>
+      <h2>{props.titlu}</h2>
       <br />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi viverra
-        pretium nulla, eget accumsan nisi consequat quis. Curabitur varius
-        tincidunt turpis, vel pellentesque risus viverra.Lorem ipsum dolor sit
-        amet, consectetur adipiscing elit. Morbi viverra pretium nulla, eget
-        accumsan nisi consequat quis. Curabitur varius tincidunt turpis, vel
-        pellentesque risus viverra.Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit. Morbi viverra pretium nulla, eget accumsan nisi
-        consequat quis. Curabitur varius tincidunt turpis, vel pellentesque
-        risus viverra.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Morbi viverra pretium nulla, eget accumsan nisi consequat quis.
-        Curabitur varius tincidunt turpis, vel pellentesque risus viverra.
-      </p>
+      <label>{props.descriere}</label>
     </div>
   </div>
 );

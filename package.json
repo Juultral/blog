@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "froala-editor": "^2.7.5",
+    "jsonfile": "^4.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.1",
+    "write-json-file": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
