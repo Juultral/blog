@@ -1,0 +1,27 @@
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 60px;
+  width: 100%;
+  border-bottom: 2px solid green;
+  background-color: #383838;
+}
+.links{
+  margin-left: auto;
+  font-size: 20px;
+  width: 20%;
+}
+#nav{
+  margin: 0px 10px;
+  text-decoration: none;
+  color: white;
+}
+#nav:hover{
+  text-decoration: none;
+}
+.navbar h2{
+  color: white;
+text-align: center;
+}

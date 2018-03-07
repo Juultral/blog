@@ -1,0 +1,10 @@
+"prettier": {
+   "overrides": [
+     {
+       "files": "src/css/**/*.css",
+       "options": {
+         "singleQuote": true;
+       }
+     }
+   ]
+ }
