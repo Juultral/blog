@@ -32,8 +32,8 @@ function posts() {
   let title = document.getElementById("titlu").value;
   let descript = document.getElementById("post_textare").value;
   localStorage.setItem(title, descript);
-  keys = Object.keys(localStorage);
   document.getElementById("post_content").reset();
+  alert("Potstarea a fost adaugata cu succes");
 }
 function cancel() {
   document.getElementById("post_content").reset();

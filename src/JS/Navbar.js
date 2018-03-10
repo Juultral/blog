@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../CSS/bootstrap.css";
 import "../CSS/navbar.css";
 
@@ -7,12 +8,12 @@ const Navbar = () => (
     <div className="navbar">
       <h2>My blog</h2>
       <div className="links">
-        <a id="nav" className="btn btn-secondary" href="/">
+        <a className="btn btn-secondary" href="/">
           Home
         </a>
-        <a id="nav" className="btn btn-secondary" href="/new_post">
+        <Link className="btn btn-secondary" to="/new_post">
           New Post
-        </a>
+        </Link>
       </div>
     </div>
   </div>
