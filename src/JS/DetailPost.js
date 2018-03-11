@@ -13,7 +13,9 @@ const DetailPost = (props) => (
       <div className="image_div">
         <img alt="img" src="https://picsum.photos/500/500/?random"/>
       </div><br/>
+      <div className="post_title">
       <label>{localStorage.getItem(props.match.params.id)}</label>
+      </div>
   </div>
 );
 function del(props){

@@ -5,12 +5,16 @@ import "../CSS/post.css";
 const Post = props => (
   <div className="post">
     <div className="content">
+    <div className="title">
       <h2>{props.title}</h2>
+      </div>
       <br />
       <div className="image_div">
       	<img alt="img" src="https://picsum.photos/500/500/?random"/>
       </div><br/>
-      <label>{props.descriere}</label>
+      <div className="title">
+      <label>{`${props.descriere.substr(0,props.descriere.length/4)} ... Continue Reading`}</label>
+      </div>
     </div>
   </div>
 );

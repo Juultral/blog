@@ -30,7 +30,7 @@ function find(){
   let x = document.getElementById("find_word").value;
   for(let i=0;i<tit.length;i++){
     if(tit[i]==x){   
-      <Redirect push to='/new_post'/>
+      <Redirect to='/new_post'/>
       break;
     }
   }
