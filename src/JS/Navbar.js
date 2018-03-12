@@ -6,7 +6,9 @@ import "../CSS/navbar.css";
 const Navbar = () => (
   <div>
     <div className="navbar">
-      <h2>My blog</h2>
+      <a href="/">
+        <h2>My blog</h2>
+      </a>
       <div className="links">
         <a className="btn btn-secondary mr-3" href="/">
           Home

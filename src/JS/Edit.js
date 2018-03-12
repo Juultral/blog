@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../CSS/bootstrap.css";
 import "../CSS/edit.css";
-let clicked = false;
 class Edit extends Component {
   state = {
     title: "",
@@ -19,7 +18,7 @@ class Edit extends Component {
   componentDidMount() {
     let title = `${this.props.match.params.id.split("_").join(" ")}`;
     this.set();
-    if (clicked) localStorage.removeItem(title);
+    localStorage.removeItem(title);
   }
   render() {
     return (
@@ -54,7 +53,6 @@ class Edit extends Component {
 export default Edit;
 
 function posts() {
-  clicked = true;
   let title = document.getElementById("titlu").value;
   let descript = document.getElementById("post_textare").value;
   localStorage.setItem(title, descript);
