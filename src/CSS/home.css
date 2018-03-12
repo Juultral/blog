@@ -21,3 +21,8 @@
 .home-find label{
   font-size: 18px;
 }
+.find_result{
+  margin-top: 25px;
+  width: 100%;
+  height: 400px;
+}

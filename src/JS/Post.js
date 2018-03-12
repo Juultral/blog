@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../CSS/bootstrap.css";
 import "../CSS/post.css";
 
@@ -14,10 +15,13 @@ const Post = props => (
       </div>
       <br />
       <div className="title">
-        <label>{`${props.descriere.substr(
-          0,
-          300
-        )} ... Continue Reading`}</label>
+        <label>{props.descriere.substr(0, 300)}</label>
+        <Link
+          className="link_continue"
+          to={`posts/${props.title.split(" ").join("_")}`}
+        >
+          &nbsp;&nbsp;... Continue reading
+        </Link>
       </div>
     </div>
   </div>

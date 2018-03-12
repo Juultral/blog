@@ -8,13 +8,9 @@ const DetailPost = props => (
     {window.scrollTo(0, 0)}
     <div className="post_title">
       <h2 className="titlu">{props.match.params.id.split("_").join(" ")}</h2>
-      <a
-        href="/"
-        className="btn btn-danger float-right"
-        onClick={() => del(props)}
-      >
+      <button className="btn btn-danger float-right" onClick={() => del(props)}>
         Delete
-      </a>
+      </button>
 
       <Link
         className="btn btn-info float-right mr-2"
@@ -37,6 +33,9 @@ const DetailPost = props => (
   </div>
 );
 function del(props) {
-  localStorage.removeItem(props.match.params.id.split("_").join(" "));
+  if (window.confirm("Are you sure !?")) {
+    localStorage.removeItem(props.match.params.id.split("_").join(" "));
+    document.location.replace("/");
+  }
 }
 export default DetailPost;

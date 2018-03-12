@@ -6,18 +6,20 @@ import "../CSS/home.css";
 import Post from "./Post";
 import DetailPost from "./DetailPost";
 let tit = Object.keys(localStorage);
+let result = ["Nothing was found !!!"];
+const serch_result = {
+  display: "block"
+};
 const Home = () => (
-  <div className="row">
-    <div className="col-8 offset-1 home">
+  <div className="row mr-auto ml-5">
+    <div className="col-9 home">
       {tit.map(title => (
         <div>
-          <Link to={`posts/${title.split(" ").join("_")}`}>
-            <Post
-              key={title}
-              title={title}
-              descriere={localStorage.getItem(title)}
-            />
-          </Link>
+          <Post
+            key={title}
+            title={title}
+            descriere={localStorage.getItem(title)}
+          />
         </div>
       ))}
     </div>
@@ -28,19 +30,26 @@ const Home = () => (
       <button className="btn btn-success" onClick={find}>
         Find
       </button>
+      <div id="rez" className="find_result" style={serch_result}>
+        <hr />
+        {result.map(rez => <li>{rez}</li>)}
+      </div>
     </div>
   </div>
 );
 export default Home;
 function find() {
+  result.splice(0, result.length);
   let key = document.getElementById("find_word");
   for (let i = 0; i < tit.length; i++) {
-    if (tit[i].toLowerCase() == key.value.toLowerCase()) {
-      document.location.replace(`/posts/${tit[i]}`);
-      break;
-    } else {
-      alert("Nothing was found !!!");
-      key.value = "";
+    if (tit[i].toLowerCase().search(key.value.toLowerCase()) >= 0) {
+      result.push(tit[i]);
     }
   }
+  if (result.length == 0) {
+    result.push("Nothing was found !!!");
+    key.value = "";
+  }
+  document.getElementById("rez").style.display = "block";
+  console.log(result);
 }

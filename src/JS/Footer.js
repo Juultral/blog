@@ -3,7 +3,7 @@ import "../CSS/bootstrap.css";
 import "../CSS/footer.css";
 
 const Footer = () => (
-  <div className="row footer">
+  <div className="footer">
     <footer className="footer-content">
       <p>Posted by: Leahu Ion</p>
       <p>

@@ -16,8 +16,8 @@ const App = () => (
       <Route exact path="/posts/:id" component={DetailPost} />
       <Route exact path="/edit/:id" component={Edit} />
       <Route exact path="/new_post" component={NewPost} />
-      <Footer />
     </div>
+    <Footer />
   </div>
 );
 export default App;
