@@ -33,7 +33,7 @@ function posts() {
   let descript = document.getElementById("post_textare").value;
   localStorage.setItem(title, descript);
   document.getElementById("post_content").reset();
-  alert("Potstarea a fost adaugata cu succes");
+  document.location.replace("/");
 }
 function cancel() {
   document.getElementById("post_content").reset();
