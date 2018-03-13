@@ -1,30 +1,16 @@
 {
-  "name": "blog",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "froala-editor": "^2.7.5",
-    "jsonfile": "^4.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2",
-    "react-router-redux": "^4.0.8",
-    "react-scripts": "1.1.1",
-    "write-json-file": "^2.3.0"
-  },
+  "name": "Blog",
+  "version": "1.0.0",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "./node_modules/.bin/eslint"
+    "client": "cd client && npm start",
+    "server": "nodemon server.js",
+    "dev":
+      "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "express": "^4.16.2"
   },
   "devDependencies": {
-    "eslint": "^4.18.2",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "concurrently": "^3.5.0"
   }
 }
