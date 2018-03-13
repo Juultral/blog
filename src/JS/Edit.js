@@ -3,6 +3,7 @@ import "../CSS/bootstrap.css";
 import "../CSS/edit.css";
 class Edit extends Component {
   state = {
+    done: false,
     title: "",
     descriere: ""
   };
@@ -15,9 +16,16 @@ class Edit extends Component {
       this.props.match.params.id.split("_").join(" ")
     )}`;
   };
+  posts = () => {
+    let title = document.getElementById("titlu").value;
+    let descript = document.getElementById("post_textare").value;
+    localStorage.setItem(title, descript);
+    document.location.replace("/");
+  };
   componentDidMount() {
     let title = `${this.props.match.params.id.split("_").join(" ")}`;
     this.set();
+    console.log(this.state.done);
     localStorage.removeItem(title);
   }
   render() {
@@ -34,13 +42,18 @@ class Edit extends Component {
                 type="text"
                 maxLength="250"
                 placeholder="Titlul"
+                required
               />
               <br />
               <label id="descriere">Descrierea : </label>
               <br />
-              <textarea id="post_textare" rows="8" />
+              <textarea id="post_textare" rows="8" required />
               <br />
-              <button type="button" className="btn btn-success" onClick={posts}>
+              <button
+                type="button"
+                className="btn btn-success"
+                onClick={this.posts}
+              >
                 Done
               </button>
             </div>
@@ -51,10 +64,3 @@ class Edit extends Component {
   }
 }
 export default Edit;
-
-function posts() {
-  let title = document.getElementById("titlu").value;
-  let descript = document.getElementById("post_textare").value;
-  localStorage.setItem(title, descript);
-  document.location.replace("/");
-}
