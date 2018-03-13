@@ -10,13 +10,12 @@
   align-items: center;
   flex-direction: column;
   padding: 15px;
-  width: 100px;
   margin-bottom: auto;
   margin-top:6%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .home-find button{
-  width: 90px;
+  width: 190px;
 }
 .home-find label{
   font-size: 18px;
