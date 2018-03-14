@@ -9,7 +9,7 @@ const Search = props => (
     {console.log(props)}
     {props.rezult.map(
       rez =>
-        rez != "Nothing was found !!!" ? (
+        rez !== "Nothing was found !!!" ? (
           <li>
             <Link to={`/posts/${rez.split(" ").join("_")}`}>{rez}</Link>
           </li>

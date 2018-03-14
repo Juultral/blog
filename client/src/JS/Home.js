@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { Redirect, withRouter } from "react-router-redux";
 import "../CSS/bootstrap.css";
 import "../CSS/home.css";
 import Post from "./Post";
-import DetailPost from "./DetailPost";
 import Search from "./Search";
 class Home extends Component {
   serch_result = {
@@ -29,11 +26,10 @@ class Home extends Component {
         }
       }
     }
-    if (this.state.result.length == 0) {
+    if (this.state.result.length === 0) {
       this.state.result.push("Nothing was found !!!");
       key.value = "";
     }
-    this.state.show_find = true;
     this.setState({ show_find: true });
   };
   render() {

@@ -24,7 +24,6 @@ class Edit extends Component {
     document.location.replace("/");
   };
   componentDidMount() {
-    let title = `${this.props.match.params.id.split("_").join(" ")}`;
     this.set();
     console.log(this.state.done);
   }
