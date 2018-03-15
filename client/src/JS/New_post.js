@@ -6,7 +6,8 @@ import history from "../history";
 class NewPost extends Component {
   state = {
     title: "",
-    description: ""
+    description: "",
+    image: "./image/"
   };
   changeTitle = x => {
     this.setState({
@@ -18,18 +19,23 @@ class NewPost extends Component {
       description: x.target.value
     });
   };
+  changeImage = x => {
+    let path = this.state.image + x.target.files[0].name;
+    this.setState({
+      image: path
+    });
+  };
   submit = x => {
     x.preventDefault();
-    console.log("request post");
     const data = {
       title: this.state.title,
-      description: this.state.description
+      description: this.state.description,
+      image: this.state.image
     };
     axios
       .post("/api/posts", data)
       .then(response => console.log(response))
       .catch(err => console.log(err));
-
     history.push("/");
     history.go("/");
   };
@@ -47,18 +53,21 @@ class NewPost extends Component {
               <label>Titlu : </label>
               <input
                 value={this.state.title}
-                id="titlu"
+                id="title"
+                name="title"
                 type="text"
                 maxLength="250"
                 placeholder="Titlul"
                 required
                 onChange={this.changeTitle}
               />
+              <input type="file" onChange={this.changeImage} />
               <br />
               <label className="float-left">Descrierea : </label>
               <br />
               <textarea
-                id="post_textare"
+                id="description"
+                name="description"
                 rows="8"
                 required
                 onChange={this.changeDescription}

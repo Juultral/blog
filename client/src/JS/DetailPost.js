@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import history from "../history";
 import { Link } from "react-router-dom";
 import "../CSS/detail_post.css";
 import "../CSS/bootstrap.css";
@@ -20,28 +21,41 @@ class DetailPost extends Component {
         console.log(error);
       });
   }
+  deletePost = () => {
+    if (window.confirm("Are you sure !?")) {
+      axios
+        .delete(`/api/posts/${this.props.match.params.id}`)
+        .then(response => {})
+        .catch(error => {
+          console.log(error);
+        });
+      history.push("/");
+      history.go("/");
+    }
+  };
   render() {
     return (
       <div id="detail_post" className="detail_post">
         <div className="post_title">
-          <h2 className="titlu">{this.props.title}</h2>
-          <button className="btn btn-danger float-right">Delete</button>
-
+          <h2 className="titlu">{this.state.post.title}</h2>
+          <button
+            className="btn btn-danger float-right"
+            onClick={this.deletePost}
+          >
+            Delete
+          </button>
           <Link
             className="btn btn-info float-right mr-2"
-            {...this.props}
-            to={`/edit/${this.props.match.params.id}`}
+            to={`/edit/${this.state.post._id}`}
           >
             Edit
           </Link>
         </div>
         <br />
-        <div className="image_div">
-          <img alt="img" src="https://picsum.photos/500/500/?random" />
-        </div>
+        <div className="image_div" />
         <br />
         <div className="post_title">
-          <label>{this.props.description}</label>
+          <label>{this.state.post.description}</label>
         </div>
       </div>
     );

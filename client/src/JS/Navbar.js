@@ -10,9 +10,9 @@ const Navbar = () => (
         <h2>My blog</h2>
       </a>
       <div className="links">
-        <a className="btn btn-secondary mr-3" href="/">
+        <Link className="btn btn-secondary mr-3" to="/">
           Home
-        </a>
+        </Link>
         <Link className="btn btn-secondary" to="/new_post">
           New Post
         </Link>

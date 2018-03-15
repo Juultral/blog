@@ -14,7 +14,7 @@ exports.getAllPosts = (req, res, next) => {
 };
 
 exports.getSinglePost = (req, res, next) => {
-  const id = req.params.postId;
+  const id = req.params.id;
   Post.findById(id)
     .exec()
     .then(doc => {
@@ -34,10 +34,10 @@ exports.getSinglePost = (req, res, next) => {
 };
 
 exports.createPost = (req, res, next) => {
-  console.log(req.body);
   const post = {
     title: req.body.title,
-    description: req.body.content
+    description: req.body.description,
+    image: req.body.image
   };
   const newPost = new Post(post);
   newPost
@@ -51,7 +51,7 @@ exports.createPost = (req, res, next) => {
 };
 
 exports.deletePost = (req, res, next) => {
-  const id = req.params.postId;
+  const id = req.params.id;
   Post.remove({ _id: id })
     .exec()
     .then(result => {
@@ -66,8 +66,7 @@ exports.deletePost = (req, res, next) => {
 };
 
 exports.updatePost = (req, res, next) => {
-  const id = req.params.postId;
-  req.body["image"] = req.file.path;
+  const id = req.params.id;
   Post.update({ _id: id }, { $set: req.body })
     .exec()
     .then(result => {

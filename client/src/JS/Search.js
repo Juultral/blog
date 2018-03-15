@@ -6,12 +6,11 @@ import "../CSS/search.css";
 const Search = props => (
   <div className="search">
     <hr />
-    {console.log(props)}
     {props.rezult.map(
-      rez =>
+      (rez, i) =>
         rez !== "Nothing was found !!!" ? (
           <li>
-            <Link to={`/posts/${rez.split(" ").join("_")}`}>{rez}</Link>
+            <Link to={`/posts/${props.id_rez[i]}`}>{rez}</Link>
           </li>
         ) : (
           "Nothing was found !!!"

@@ -12,9 +12,35 @@ class Home extends Component {
   state = {
     show_find: false,
     result: ["Nothing was found !!!"],
+    id_rez: [],
     posts: []
   };
-
+  show_result = e => {
+    let rezultate = [];
+    let id_rezultate = [];
+    e.preventDefault();
+    this.setState({
+      result: this.state.result.splice(0, this.state.result.length)
+    });
+    let key = document.getElementById("find_word");
+    if (key.value.length > 2) {
+      for (let i = 0; i < this.state.posts.length; i++) {
+        if (
+          this.state.posts[i].title
+            .toLowerCase()
+            .search(key.value.toLowerCase()) >= 0
+        ) {
+          id_rezultate.push(this.state.posts[i]._id);
+          rezultate.push(this.state.posts[i].title);
+        }
+      }
+    }
+    if (rezultate.length === 0) {
+      rezultate.push("Nothing was found !!!");
+      key.value = "";
+    }
+    this.setState({ show_find: true, result: rezultate, id_rez: id_rezultate });
+  };
   componentDidMount() {
     axios
       .get("/api/posts")
@@ -25,28 +51,7 @@ class Home extends Component {
         console.log(error);
       });
   }
-  find = () => {};
-  show_result = e => {
-    e.preventDefault();
-    this.setState({
-      result: this.state.result.splice(0, this.state.result.length)
-    });
-    let key = document.getElementById("find_word");
-    if (key.value.length > 2) {
-      for (let i = 0; i < this.state.tit.length; i++) {
-        if (
-          this.state.tit[i].toLowerCase().search(key.value.toLowerCase()) >= 0
-        ) {
-          this.state.result.push(this.state.tit[i]);
-        }
-      }
-    }
-    if (this.state.result.length === 0) {
-      this.state.result.push("Nothing was found !!!");
-      key.value = "";
-    }
-    this.setState({ show_find: true });
-  };
+
   render() {
     return (
       <div className="row mr-auto ml-5">
@@ -69,7 +74,7 @@ class Home extends Component {
           </form>
           <div>
             {this.state.show_find ? (
-              <Search rezult={this.state.result} />
+              <Search rezult={this.state.result} id_rez={this.state.id_rez} />
             ) : null}
           </div>
           <div />
