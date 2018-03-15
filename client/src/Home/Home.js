@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "../CSS/bootstrap.css";
-import "../CSS/home.css";
-import Post from "./Post";
-import Search from "./Search";
+import "../bootstrap.css";
+import "./home.css";
+import Post from "../Post/Post";
+import Search from "../Search/Search";
 
 class Home extends Component {
   serch_result = {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../CSS/bootstrap.css";
-import "../CSS/search.css";
+import "../bootstrap.css";
+import "./search.css";
 
 const Search = props => (
   <div className="search">

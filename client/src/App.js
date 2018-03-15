@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import Home from "./Home";
-import DetailPost from "./DetailPost";
-import NewPost from "./New_post";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import Edit from "./Edit";
-import NotFound from "./NotFound";
-import "../CSS/App.css";
+import Home from "./Home/Home";
+import DetailPost from "./DetailPost/DetailPost";
+import NewPost from "./NewPost/New_post";
+import Navbar from "./Navbar/Navbar";
+import Footer from "./Footer/Footer";
+import Edit from "./EditPost/Edit";
+import NotFound from "./Page_404/NotFound";
+import "./App.css";
 
 class App extends Component {
   render() {

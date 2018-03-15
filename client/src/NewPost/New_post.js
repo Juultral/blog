@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import history from "../history";
-import "../CSS/bootstrap.css";
-import "../CSS/edit.css";
+import "../bootstrap.css";
+import "./new_post.css";
 
-class Edit extends Component {
+class NewPost extends Component {
   state = {
     title: "",
     description: "",
-    post: []
+    image: "./image/"
   };
   changeTitle = x => {
     this.setState({
@@ -20,70 +20,59 @@ class Edit extends Component {
       description: x.target.value
     });
   };
-  set = () => {
+  changeImage = x => {
+    let path = this.state.image + x.target.files[0].name;
     this.setState({
-      title: this.state.post.title,
-      description: this.state.post.description
+      image: path
     });
-    document.getElementById("titlu").value = `${this.state.post.title}`;
-    document.getElementById("post_textare").value = `${
-      this.state.post.description
-    }`;
   };
-  edit = x => {
+  submit = x => {
     x.preventDefault();
     const data = {
       title: this.state.title,
-      description: this.state.description
+      description: this.state.description,
+      image: this.state.image
     };
-
     axios
-      .patch(`/api/posts/${this.props.match.params.id}`, data)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    history.goBack();
+      .post("/api/posts", data)
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
+    history.push("/");
+    history.go("/");
   };
-  componentDidMount() {
-    window.scrollTo(0, 0);
-    axios
-      .get(`/api/posts/${this.props.match.params.id}`)
-      .then(response => {
-        this.setState({ post: response.data });
-        this.set();
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  cancel = () => {
+    document.getElementById("post_content").reset();
+  };
   render() {
     return (
       <div className="new_post">
-        <h1>Edit post</h1>
+        <h1>New post</h1>
         <br />
-        <form id="post_content" onSubmit={this.edit}>
+        <form id="post_content" onSubmit={this.submit}>
           <div className="row">
             <div className="col-10 offset-1">
               <label>Titlu : </label>
               <input
-                id="titlu"
+                value={this.state.title}
+                id="title"
+                name="title"
                 type="text"
                 maxLength="250"
                 placeholder="Titlul"
                 required
                 onChange={this.changeTitle}
               />
+              <input type="file" onChange={this.changeImage} />
               <br />
-              <label id="descriere">Descrierea : </label>
+              <label className="float-left">Descrierea : </label>
               <br />
               <textarea
-                id="post_textare"
+                id="description"
+                name="description"
                 rows="8"
                 required
                 onChange={this.changeDescription}
+                value={this.state.description}
               />
               <br />
               <input type="submit" className="btn btn-success" />
@@ -94,4 +83,4 @@ class Edit extends Component {
     );
   }
 }
-export default Edit;
+export default NewPost;

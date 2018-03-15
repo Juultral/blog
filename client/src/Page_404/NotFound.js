@@ -1,5 +1,5 @@
 import React from "react";
-import "../CSS/not_found.css";
+import "./not_found.css";
 const NotFound = () => (
   <div className="error-container">
     <h1>404</h1>

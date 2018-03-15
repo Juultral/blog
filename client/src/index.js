@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import App from "./JS/App";
-import "./CSS/index.css";
+import App from "./App";
+import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
 
 ReactDOM.render(

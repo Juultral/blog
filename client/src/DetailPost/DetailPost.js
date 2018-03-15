@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import history from "../history";
 import { Link } from "react-router-dom";
-import "../CSS/detail_post.css";
-import "../CSS/bootstrap.css";
-import "../CSS/post.css";
+import "./detail_post.css";
+import "../bootstrap.css";
+import "../Post/post.css";
 
 class DetailPost extends Component {
   state = {

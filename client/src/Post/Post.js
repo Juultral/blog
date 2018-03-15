@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../CSS/bootstrap.css";
-import "../CSS/post.css";
+import "../bootstrap.css";
+import "./post.css";
 
 const Post = props => (
   <div className="post">
