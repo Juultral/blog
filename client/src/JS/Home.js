@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "../CSS/bootstrap.css";
 import "../CSS/home.css";
 import Post from "./Post";
 import Search from "./Search";
+
 class Home extends Component {
   serch_result = {
     display: "none"
@@ -10,12 +12,25 @@ class Home extends Component {
   state = {
     show_find: false,
     result: ["Nothing was found !!!"],
-    tit: Object.keys(localStorage)
+    posts: []
   };
+
+  componentDidMount() {
+    axios
+      .get("/api/posts")
+      .then(response => {
+        this.setState({ posts: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
   find = () => {};
   show_result = e => {
     e.preventDefault();
-    this.state.result.splice(0, this.state.result.length);
+    this.setState({
+      result: this.state.result.splice(0, this.state.result.length)
+    });
     let key = document.getElementById("find_word");
     if (key.value.length > 2) {
       for (let i = 0; i < this.state.tit.length; i++) {
@@ -36,15 +51,7 @@ class Home extends Component {
     return (
       <div className="row mr-auto ml-5">
         <div className="col-9 home">
-          {this.state.tit.map(title => (
-            <div>
-              <Post
-                key={title}
-                title={title}
-                descriere={localStorage.getItem(title)}
-              />
-            </div>
-          ))}
+          {this.state.posts.map(post => <Post {...post} key={post._id} />)}
         </div>
         <div className="col-2 home-find">
           <form className="form-group">
