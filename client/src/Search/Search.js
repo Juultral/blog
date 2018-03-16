@@ -9,7 +9,7 @@ const Search = props => (
     {props.rezult.map(
       (rez, i) =>
         rez !== "Nothing was found !!!" ? (
-          <li>
+          <li key={i}>
             <Link to={`/posts/${props.id_rez[i]}`}>{rez}</Link>
           </li>
         ) : (

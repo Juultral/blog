@@ -5,8 +5,8 @@ import "./post.css";
 
 const Post = props => (
   <div className="post">
-    <div className="content">
-      <div className="title">
+    <div className="content container">
+      <div className="title col-sm-12">
         <h2>{props.title}</h2>
       </div>
       <br />

@@ -4,7 +4,7 @@ import "../bootstrap.css";
 import "./navbar.css";
 
 const Navbar = () => (
-  <div>
+  <div className="container col-lg-12" style={{ margin: "0px" }}>
     <div className="navbar">
       <a href="/">
         <h2>My blog</h2>

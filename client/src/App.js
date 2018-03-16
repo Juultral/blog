@@ -7,6 +7,8 @@ import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
 import Edit from "./EditPost/Edit";
 import NotFound from "./Page_404/NotFound";
+import SignUp from "./SignUp/SignUp";
+import LogIn from "./LogIn/LogIn";
 import "./App.css";
 
 class App extends Component {
@@ -20,6 +22,8 @@ class App extends Component {
             <Route path="/posts/:id" component={DetailPost} />
             <Route path="/edit/:id" component={Edit} />
             <Route path="/new_post" component={NewPost} />
+            <Route path="/sign_up" component={SignUp} />
+            <Route path="/log_in" component={LogIn} />
             <Route path="*" component={NotFound} />
           </Switch>
         </div>

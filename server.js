@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const postsRoutes = require("./routes/post_routes");
+const userRoutes = require("./routes/user_routes");
 const bodyParser = require("body-parser");
 const path = require("path");
 
@@ -31,3 +32,4 @@ app.use((req, res, next) => {
 app.use(logger("dev"));
 app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use("/api/posts", postsRoutes);
+app.use("/api/users", userRoutes);

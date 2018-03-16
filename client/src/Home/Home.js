@@ -54,30 +54,34 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="row mr-auto ml-5">
-        <div className="col-9 home">
+      <div className="row" style={{ margin: "0px" }}>
+        <div className="col-9 ml-5 home">
           {this.state.posts.map(post => <Post {...post} key={post._id} />)}
         </div>
         <div className="col-2 home-find">
-          <form className="form-group">
-            <p>Search :</p>
-            <input
-              className="form-control"
-              id="find_word"
-              type="text"
-              maxLength="50"
-            />
-            <br />
-            <button className="btn btn-success ml-4" onClick={this.show_result}>
-              Find
-            </button>
-          </form>
-          <div>
+          <div className="form-group container col-lg-12">
+            <form className="form-control">
+              <p>Search :</p>
+              <input
+                className="form-control"
+                id="find_word"
+                type="text"
+                maxLength="50"
+              />
+              <br />
+              <button
+                className="btn btn-success form-control"
+                onClick={this.show_result}
+              >
+                Find
+              </button>
+            </form>
+          </div>
+          <div style={{ padding: "10px" }}>
             {this.state.show_find ? (
               <Search rezult={this.state.result} id_rez={this.state.id_rez} />
             ) : null}
           </div>
-          <div />
         </div>
         {this.state.posts.length == 0 ? (
           <div className="footer_bottom">

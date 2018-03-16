@@ -29,7 +29,8 @@ class Edit extends Component {
   set = () => {
     this.setState({
       title: this.state.post.title,
-      description: this.state.post.description
+      description: this.state.post.description,
+      image: this.state.post.image
     });
     document.getElementById("titlu").value = `${this.state.post.title}`;
     document.getElementById("post_textare").value = `${
