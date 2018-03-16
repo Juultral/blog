@@ -37,7 +37,7 @@ exports.createPost = (req, res, next) => {
   const post = {
     title: req.body.title,
     description: req.body.description,
-    image: req.body.image
+    image: req.file.path
   };
   const newPost = new Post(post);
   newPost
@@ -67,6 +67,7 @@ exports.deletePost = (req, res, next) => {
 
 exports.updatePost = (req, res, next) => {
   const id = req.params.id;
+  req.body["image"] = req.file.path;
   Post.update({ _id: id }, { $set: req.body })
     .exec()
     .then(result => {

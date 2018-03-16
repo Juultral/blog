@@ -8,11 +8,17 @@ class Edit extends Component {
   state = {
     title: "",
     description: "",
+    image: null,
     post: []
   };
   changeTitle = x => {
     this.setState({
       title: x.target.value
+    });
+  };
+  changeImage = x => {
+    this.setState({
+      image: x.target.files[0]
     });
   };
   changeDescription = x => {
@@ -32,13 +38,17 @@ class Edit extends Component {
   };
   edit = x => {
     x.preventDefault();
-    const data = {
-      title: this.state.title,
-      description: this.state.description
+    const formData = new FormData();
+    formData.append("title", this.state.title);
+    formData.append("description", this.state.description);
+    formData.append("image", this.state.image);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data"
+      }
     };
-
     axios
-      .patch(`/api/posts/${this.props.match.params.id}`, data)
+      .patch(`/api/posts/${this.props.match.params.id}`, formData, config)
       .then(response => {
         console.log(response);
       })
@@ -76,12 +86,14 @@ class Edit extends Component {
                 required
                 onChange={this.changeTitle}
               />
+              <input type="file" onChange={this.changeImage} name="image" />
               <br />
               <label id="descriere">Descrierea : </label>
               <br />
               <textarea
                 id="post_textare"
                 rows="8"
+                maxLength="1000"
                 required
                 onChange={this.changeDescription}
               />

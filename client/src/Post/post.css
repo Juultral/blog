@@ -7,8 +7,7 @@
   padding: 20px;
 }
 .image_div{
-	display: flex;
-	justify-content: space-around;
+	text-align: center;
 }
 .title{
   background-color: white;

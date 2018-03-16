@@ -8,7 +8,7 @@ class NewPost extends Component {
   state = {
     title: "",
     description: "",
-    image: "./image/"
+    image: null
   };
   changeTitle = x => {
     this.setState({
@@ -21,20 +21,23 @@ class NewPost extends Component {
     });
   };
   changeImage = x => {
-    let path = this.state.image + x.target.files[0].name;
     this.setState({
-      image: path
+      image: x.target.files[0]
     });
   };
   submit = x => {
     x.preventDefault();
-    const data = {
-      title: this.state.title,
-      description: this.state.description,
-      image: this.state.image
+    const formData = new FormData();
+    formData.append("title", this.state.title);
+    formData.append("description", this.state.description);
+    formData.append("image", this.state.image);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data"
+      }
     };
     axios
-      .post("/api/posts", data)
+      .post("/api/posts", formData, config)
       .then(response => console.log(response))
       .catch(err => console.log(err));
     history.push("/");
@@ -62,7 +65,7 @@ class NewPost extends Component {
                 required
                 onChange={this.changeTitle}
               />
-              <input type="file" onChange={this.changeImage} />
+              <input type="file" onChange={this.changeImage} name="image" />
               <br />
               <label className="float-left">Descrierea : </label>
               <br />
@@ -70,6 +73,7 @@ class NewPost extends Component {
                 id="description"
                 name="description"
                 rows="8"
+                maxLength="1000"
                 required
                 onChange={this.changeDescription}
                 value={this.state.description}

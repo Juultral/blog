@@ -52,7 +52,14 @@ class DetailPost extends Component {
           </Link>
         </div>
         <br />
-        <div className="image_div" />
+        <div className="image_div">
+          <img
+            src={this.state.post.image}
+            alt="img_content"
+            width="100%"
+            height="auto"
+          />
+        </div>
         <br />
         <div className="post_title">
           <label>{this.state.post.description}</label>

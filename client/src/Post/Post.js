@@ -10,7 +10,9 @@ const Post = props => (
         <h2>{props.title}</h2>
       </div>
       <br />
-      <div className="image_div" />
+      <div className="image_div">
+        <img src={props.image} alt="img_content" width="100%" height="auto" />
+      </div>
       <br />
       <div className="title">
         <label>{props.description.substr(0, 300)}</label>
