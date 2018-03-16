@@ -15,3 +15,8 @@
 .footer-content{
   padding: 10px;
 }
+
+.footer-set-bottom {
+  position: absolute;
+  bottom: 0;
+}

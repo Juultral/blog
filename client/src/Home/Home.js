@@ -79,6 +79,11 @@ class Home extends Component {
           </div>
           <div />
         </div>
+        {this.state.posts.length == 0 ? (
+          <div className="footer_bottom">
+            <h1>Nothing to show you</h1>
+          </div>
+        ) : null}
       </div>
     );
   }

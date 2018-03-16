@@ -55,7 +55,8 @@ class Edit extends Component {
       .catch(error => {
         console.log(error);
       });
-    history.goBack();
+    history.push("/");
+    history.go("/");
   };
   componentDidMount() {
     window.scrollTo(0, 0);
