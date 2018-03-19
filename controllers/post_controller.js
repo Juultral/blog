@@ -18,7 +18,6 @@ exports.getSinglePost = (req, res, next) => {
   Post.findById(id)
     .exec()
     .then(doc => {
-      console.log("From database", doc);
       if (doc) {
         res.status(200).json(doc);
       } else {
@@ -37,7 +36,8 @@ exports.createPost = (req, res, next) => {
   const post = {
     title: req.body.title,
     description: req.body.description,
-    image: req.file.path
+    image: req.file.path,
+    date: req.body.date
   };
   const newPost = new Post(post);
   newPost

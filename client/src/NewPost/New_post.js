@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 import axios from "axios";
 import history from "../history";
 import "../bootstrap.css";
@@ -27,10 +28,12 @@ class NewPost extends Component {
   };
   submit = x => {
     x.preventDefault();
+    let date = moment().format("llll");
     const formData = new FormData();
     formData.append("title", this.state.title);
     formData.append("description", this.state.description);
     formData.append("image", this.state.image);
+    formData.append("date", date);
     const config = {
       headers: {
         "content-type": "multipart/form-data"
@@ -73,7 +76,8 @@ class NewPost extends Component {
                 id="description"
                 name="description"
                 rows="8"
-                maxLength="1000"
+                maxLength="3000"
+                minLength="300"
                 required
                 onChange={this.changeDescription}
                 value={this.state.description}

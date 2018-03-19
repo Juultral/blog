@@ -9,27 +9,42 @@ import Edit from "./EditPost/Edit";
 import NotFound from "./Page_404/NotFound";
 import SignUp from "./SignUp/SignUp";
 import LogIn from "./LogIn/LogIn";
+import NotLogIn from "./Page_404/NotLogIn";
 import "./App.css";
 
 class App extends Component {
   render() {
-    return (
-      <div>
-        <div className="app">
-          <Navbar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/posts/:id" component={DetailPost} />
-            <Route path="/edit/:id" component={Edit} />
-            <Route path="/new_post" component={NewPost} />
-            <Route path="/sign_up" component={SignUp} />
-            <Route path="/log_in" component={LogIn} />
-            <Route path="*" component={NotFound} />
-          </Switch>
+    if (localStorage.getItem("log_in")) {
+      return (
+        <div>
+          <div className="app">
+            <Navbar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/posts/:id" component={DetailPost} />
+              <Route path="/edit/:id" component={Edit} />
+              <Route path="/new_post" component={NewPost} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div>
+          <div className="app">
+            <Navbar />
+            <Switch>
+              <Route path="/sign_up" component={SignUp} />
+              <Route path="/log_in" component={LogIn} />
+              <Route path="*" component={NotLogIn} />
+            </Switch>
+          </div>
+          <Footer />
+        </div>
+      );
+    }
   }
 }
 export default App;

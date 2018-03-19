@@ -11,19 +11,18 @@ class LogIn extends Component {
     e.preventDefault();
     let pass = document.getElementById("inputPassword").value;
     let login = document.getElementById("inputEmail").value;
-
     for (let i = 0; i < this.state.users.length; i++) {
       if (
-        this.state.users[i].login == login &&
-        this.state.users[i].password == pass
+        this.state.users[i].login === login &&
+        this.state.users[i].password === pass
       ) {
-        localStorage.removeItem("log_in");
         localStorage.setItem("log_in", true);
-        console.log(localStorage.getItem("log_in"));
-      } else {
-        alert("Incorrect password or login");
+        history.push("/");
+        history.go("/");
       }
     }
+    document.getElementById("errors").style.display = "block";
+    document.getElementById("err").innerHTML = "Incorrect password or login";
   };
   componentDidMount() {
     axios
@@ -39,6 +38,13 @@ class LogIn extends Component {
     return (
       <div className="container">
         <div className="card card-container">
+          <div
+            style={{ display: "none", color: "red", textAlign: "center" }}
+            id="errors"
+          >
+            <p id="err" />
+          </div>
+          <br />
           <h3 style={{ textAlign: "center" }}>Log in</h3>
           <form className="form-signin" onSubmit={this.logIn}>
             <span id="reauth-email" className="reauth-email" />

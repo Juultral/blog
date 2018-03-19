@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 import axios from "axios";
 import history from "../history";
 import "../bootstrap.css";
@@ -43,6 +44,7 @@ class Edit extends Component {
     formData.append("title", this.state.title);
     formData.append("description", this.state.description);
     formData.append("image", this.state.image);
+    formData.append("date", moment().toString());
     const config = {
       headers: {
         "content-type": "multipart/form-data"

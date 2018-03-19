@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "../bootstrap.css";
 import "./search.css";
@@ -18,4 +19,7 @@ const Search = props => (
     )}
   </div>
 );
+Search.propTypes = {
+  rezult: PropTypes.array
+};
 export default Search;

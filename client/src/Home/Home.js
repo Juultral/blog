@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "../bootstrap.css";
 import "./home.css";
@@ -57,25 +58,32 @@ class Home extends Component {
       <div className="row" style={{ margin: "0px" }}>
         <div className="col-9 ml-5 home">
           {this.state.posts.map(post => <Post {...post} key={post._id} />)}
+          {this.state.posts.length === 0 ? (
+            <div className="footer_bottom">
+              <h1>Nothing to show you</h1>
+            </div>
+          ) : null}
         </div>
         <div className="col-2 home-find">
-          <div className="form-group container col-lg-12">
-            <form className="form-control">
-              <p>Search :</p>
-              <input
-                className="form-control"
-                id="find_word"
-                type="text"
-                maxLength="50"
-              />
-              <br />
-              <button
-                className="btn btn-success form-control"
-                onClick={this.show_result}
-              >
-                Find
-              </button>
-            </form>
+          <div className="row">
+            <div className="form-group container col-12 ">
+              <form className="form-control">
+                <p>Search :</p>
+                <input
+                  className="form-control"
+                  id="find_word"
+                  type="text"
+                  maxLength="50"
+                />
+                <br />
+                <button
+                  className="btn btn-success form-control"
+                  onClick={this.show_result}
+                >
+                  Find
+                </button>
+              </form>
+            </div>
           </div>
           <div style={{ padding: "10px" }}>
             {this.state.show_find ? (
@@ -83,11 +91,6 @@ class Home extends Component {
             ) : null}
           </div>
         </div>
-        {this.state.posts.length == 0 ? (
-          <div className="footer_bottom">
-            <h1>Nothing to show you</h1>
-          </div>
-        ) : null}
       </div>
     );
   }

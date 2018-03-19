@@ -1,19 +1,31 @@
 .detail_post{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  padding: 2%;
+  padding: 10px;
   background-color: #e6ffe6;
-  margin:20px 250px;
+  margin-top:20px;
 }
 .edit{
-	float: right;
-	width: 100px;
-	height: 35px;
+	width: auto;
+	height: auto;
 }
 .titlu{
-	display: inline;
+  display: inline;
 }
 .post_title{
   background-color: white;
 	padding: 10px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.confirm_delete{
+  padding: 15px 50px;
+  position: fixed;
+  top:50%;
+  left: 45%;
+  display: none;
+  width: auto;
+  height: auto;
+  text-align: center;
+  background-color : white;
+  box-shadow: 0 8px 16px 0 rgba(255, 0, 0, 0.2), 0 12px 40px 0 rgba(255, 0, 0, 0.19);
+  border: solid red 3px;
 }
