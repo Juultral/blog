@@ -28,12 +28,11 @@ class NewPost extends Component {
   };
   submit = x => {
     x.preventDefault();
-    let date = moment().format("llll");
     const formData = new FormData();
     formData.append("title", this.state.title);
     formData.append("description", this.state.description);
     formData.append("image", this.state.image);
-    formData.append("date", date);
+    formData.append("date", moment().format("llll"));
     const config = {
       headers: {
         "content-type": "multipart/form-data"
@@ -51,42 +50,56 @@ class NewPost extends Component {
   };
   render() {
     return (
-      <div className="new_post">
-        <h1>New post</h1>
-        <br />
-        <form id="post_content" onSubmit={this.submit}>
-          <div className="row">
-            <div className="col-10 offset-1">
-              <label>Titlu : </label>
-              <input
-                value={this.state.title}
-                id="title"
-                name="title"
-                type="text"
-                maxLength="250"
-                placeholder="Titlul"
-                required
-                onChange={this.changeTitle}
-              />
-              <input type="file" onChange={this.changeImage} name="image" />
+      <div className="container">
+        <div className="row mt-5 mr-0 mb-5 pl-0">
+          <div className="col-12 pr-0">
+            <div className="new_post">
+              <h1>New post</h1>
               <br />
-              <label className="float-left">Descrierea : </label>
-              <br />
-              <textarea
-                id="description"
-                name="description"
-                rows="8"
-                maxLength="3000"
-                minLength="300"
-                required
-                onChange={this.changeDescription}
-                value={this.state.description}
-              />
-              <br />
-              <input type="submit" className="btn btn-success" />
+              <form id="post_content" onSubmit={this.submit}>
+                <div class="form-group">
+                  <label for="title">Titlu:</label>
+                  <input
+                    className="form-control"
+                    value={this.state.title}
+                    id="title"
+                    name="title"
+                    type="text"
+                    maxLength="250"
+                    placeholder="Titlul"
+                    required
+                    onChange={this.changeTitle}
+                  />
+                </div>
+                <input
+                  type="file"
+                  onChange={this.changeImage}
+                  name="image"
+                  className="mt-2"
+                />
+                <br />
+                <br />
+                <div className="form-group">
+                  <label for="description" className="float-left">
+                    Descrierea : &nbsp;
+                  </label>
+                  <textarea
+                    className="form-control"
+                    id="description"
+                    name="description"
+                    rows="8"
+                    maxLength="3000"
+                    minLength="300"
+                    required
+                    onChange={this.changeDescription}
+                    value={this.state.description}
+                  />
+                </div>
+                <input type="submit" className="btn btn-success float-left" />
+              </form>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     );
   }

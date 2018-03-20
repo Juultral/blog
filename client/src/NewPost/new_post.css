@@ -1,24 +1,10 @@
 .new_post{
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  width:100%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 10% 25%;
   padding: 15px;
+}
+.new_post h1{
   text-align: center;
-}
-input{
-  margin-left: 10px;
-}
-h1{
-  text-align: center;
-}
-label{
-  font-size: 18px;
-}
-textarea{
-  width: 100%;
-}
-.new_post input[type="submit"],.cancel{
-  margin-left: 15px;
-  float: left;
-  width: 100px;
 }

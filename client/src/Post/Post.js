@@ -8,7 +8,7 @@ const Post = props => (
   <div className="post">
     <div className="content container">
       <div className="title col-sm-12">
-        <h2>{props.title}</h2>
+        <h4>{props.title}</h4>
       </div>
       <br />
       <div className="image_div">
@@ -20,9 +20,9 @@ const Post = props => (
         <Link className="link_continue" to={`posts/${props._id}`}>
           &nbsp;&nbsp;... Continue reading
         </Link>
-        <label className="float-right">
-          <b>Posted on : {props.date}</b>
-        </label>
+        <p style={{ fontSize: "12px", marginTop: "10px" }}>
+          Posted on : {props.date}
+        </p>
       </div>
     </div>
   </div>

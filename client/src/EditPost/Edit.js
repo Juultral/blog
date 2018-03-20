@@ -33,8 +33,8 @@ class Edit extends Component {
       description: this.state.post.description,
       image: this.state.post.image
     });
-    document.getElementById("titlu").value = `${this.state.post.title}`;
-    document.getElementById("post_textare").value = `${
+    document.getElementById("title").value = `${this.state.post.title}`;
+    document.getElementById("description").value = `${
       this.state.post.description
     }`;
   };
@@ -44,7 +44,7 @@ class Edit extends Component {
     formData.append("title", this.state.title);
     formData.append("description", this.state.description);
     formData.append("image", this.state.image);
-    formData.append("date", moment().toString());
+    formData.append("date", moment().format("llll"));
     const config = {
       headers: {
         "content-type": "multipart/form-data"
@@ -75,37 +75,55 @@ class Edit extends Component {
   }
   render() {
     return (
-      <div className="new_post">
-        <h1>Edit post</h1>
-        <br />
-        <form id="post_content" onSubmit={this.edit}>
-          <div className="row">
-            <div className="col-10 offset-1">
-              <label>Titlu : </label>
-              <input
-                id="titlu"
-                type="text"
-                maxLength="250"
-                placeholder="Titlul"
-                required
-                onChange={this.changeTitle}
-              />
-              <input type="file" onChange={this.changeImage} name="image" />
+      <div className="container">
+        <div className="row mt-5 mr-0 mb-5 pl-0">
+          <div className="col-12 pr-0">
+            <div className="new_post">
+              <h1>Edit post</h1>
               <br />
-              <label id="descriere">Descrierea : </label>
-              <br />
-              <textarea
-                id="post_textare"
-                rows="8"
-                maxLength="1000"
-                required
-                onChange={this.changeDescription}
-              />
-              <br />
-              <input type="submit" className="btn btn-success" />
+              <form id="post_content" onSubmit={this.edit}>
+                <div className="form-group">
+                  <label>Titlu:</label>
+                  <input
+                    className="form-control"
+                    value={this.state.title}
+                    id="title"
+                    name="title"
+                    type="text"
+                    maxLength="250"
+                    placeholder="Titlul"
+                    required
+                    onChange={this.changeTitle}
+                  />
+                </div>
+                <input
+                  id="image"
+                  type="file"
+                  onChange={this.changeImage}
+                  name="image"
+                  className="mt-2"
+                />
+                <br />
+                <br />
+                <div className="form-group">
+                  <label className="float-left">Descrierea : &nbsp;</label>
+                  <textarea
+                    className="form-control"
+                    id="description"
+                    name="description"
+                    rows="8"
+                    maxLength="3000"
+                    minLength="300"
+                    required
+                    onChange={this.changeDescription}
+                    value={this.state.description}
+                  />
+                </div>
+                <input type="submit" className="btn btn-success float-left" />
+              </form>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     );
   }

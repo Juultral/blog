@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import history from "../history";
 import "./sign_up.css";
@@ -116,6 +117,11 @@ class SignUp extends Component {
             >
               Sign up
             </button>
+            <p style={{ width: "100%", textAlign: "center" }}>
+              <Link className="" to="/log_in">
+                Already have an account?
+              </Link>
+            </p>
           </form>
         </div>
       </div>

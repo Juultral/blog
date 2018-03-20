@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import moment from "moment";
 import history from "../history";
 import { Link } from "react-router-dom";
 import "./navbar.css";
@@ -13,14 +12,14 @@ class Navbar extends Component {
   render() {
     if (localStorage.getItem("log_in")) {
       return (
-        <div className="container col-12" style={{ margin: "0px" }}>
-          <div className="navbar row">
-            <div>
+        <div className="navbar">
+          <div className="row" style={{ width: "100%" }}>
+            <div className="col-4">
               <a href="/">
                 <h2>My blog</h2>
               </a>
             </div>
-            <div className="links col-4">
+            <div className="links col-4 ml-auto">
               <div className="menu">
                 <Link className="btn btn-secondary mr-3" to="/">
                   Home
@@ -67,7 +66,7 @@ class Navbar extends Component {
       );
     } else {
       return (
-        <div className="container col-lg-12" style={{ margin: "0px" }}>
+        <div style={{ width: "100%" }}>
           <div className="navbar">
             <a href="/">
               <h2>My blog</h2>

@@ -18,14 +18,14 @@
 }
 .confirm_delete{
   padding: 15px 50px;
-  position: fixed;
+  margin-bottom:10px;
+  position: relative;
   top:50%;
-  left: 45%;
+  left: auto;
   display: none;
   width: auto;
   height: auto;
   text-align: center;
   background-color : white;
   box-shadow: 0 8px 16px 0 rgba(255, 0, 0, 0.2), 0 12px 40px 0 rgba(255, 0, 0, 0.19);
-  border: solid red 3px;
 }

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import moment from "moment";
 import PropTypes from "prop-types";
 import axios from "axios";
 import history from "../history";
@@ -35,13 +34,15 @@ class DetailPost extends Component {
   };
   render() {
     return (
-      <div className="row">
-        <div id="detail_post" className="col-sm-11 mx-auto">
+      <div className="row mr-0 ml-auto mb-2">
+        <div id="detail_post" className="col-sm-10 mx-auto">
           <div className="detail_post">
             <div className="post_title">
               <div className="row">
-                <h2 className="mx-auto">{this.state.post.title}</h2>
-                <div className="col-sm-2 offset-10">
+                <div className="col-9 mx-auto">
+                  <h4 className="mx-auto">{this.state.post.title}</h4>
+                </div>
+                <div className="col-2 float-right mx-auto">
                   <button
                     className="btn btn-danger float-right"
                     onClick={() => {
@@ -95,7 +96,10 @@ class DetailPost extends Component {
               <label>
                 {this.state.post.description}
                 <b>
-                  <p className="ml-auto" style={{ margin: "10px" }}>
+                  <p
+                    className="ml-auto"
+                    style={{ margin: "10px", fontSize: "12px" }}
+                  >
                     Posted on : {this.state.post.date}
                   </p>
                 </b>
