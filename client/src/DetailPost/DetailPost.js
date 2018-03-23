@@ -26,7 +26,10 @@ class DetailPost extends Component {
   };
   render() {
     {
-      console.log(this.props.store.posts);
+      {
+        console.log(this.props.store.posts.idUser);
+        console.log(localStorage.getItem("log_in"));
+      }
     }
     return (
       <div className="row mr-0 ml-auto mb-2">
@@ -37,23 +40,28 @@ class DetailPost extends Component {
                 <div className="col-9 mx-auto">
                   <h4 className="mx-auto">{this.props.store.posts.title}</h4>
                 </div>
-                <div className="col-2 float-right mx-auto">
-                  <button
-                    className="btn btn-danger float-right"
-                    onClick={() => {
-                      document.getElementById("confirm").style.display =
-                        "block";
-                    }}
-                  >
-                    Delete
-                  </button>
-                  <Link
-                    className="btn btn-info float-right mr-2"
-                    to={`/edit/${this.props.store.posts._id}`}
-                  >
-                    Edit
-                  </Link>
-                </div>
+                {localStorage.getItem("log_in") ===
+                  this.props.store.posts.idUser ||
+                localStorage.getItem("log_in") ===
+                  "5ab51fb6d5a771104d447aa3" ? (
+                  <div className="col-2 float-right mx-auto">
+                    <button
+                      className="btn btn-danger float-right"
+                      onClick={() => {
+                        document.getElementById("confirm").style.display =
+                          "block";
+                      }}
+                    >
+                      Delete
+                    </button>
+                    <Link
+                      className="btn btn-info float-right mr-2"
+                      to={`/edit/${this.props.store.posts._id}`}
+                    >
+                      Edit
+                    </Link>
+                  </div>
+                ) : null}
               </div>
             </div>
             <br />

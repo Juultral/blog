@@ -46,6 +46,9 @@ class Home extends Component {
     this.props.loadPosts();
   }
   render() {
+    {
+      console.log(localStorage.getItem("log_in"));
+    }
     return (
       <div className="row" style={{ margin: "0px" }}>
         <div className="container ml-auto mr-0">

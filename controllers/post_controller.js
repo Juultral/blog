@@ -37,7 +37,8 @@ exports.createPost = (req, res, next) => {
     title: req.body.title,
     description: req.body.description,
     image: req.file.path,
-    date: req.body.date
+    date: req.body.date,
+    idUser: req.body.idUser
   };
   const newPost = new Post(post);
   newPost

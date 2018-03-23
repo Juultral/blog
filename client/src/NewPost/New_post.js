@@ -33,6 +33,7 @@ class NewPost extends Component {
     formData.append("description", this.state.description);
     formData.append("image", this.state.image);
     formData.append("date", moment().format("llll"));
+    formData.append("idUser", localStorage.getItem("log_in"));
     const config = {
       headers: {
         "content-type": "multipart/form-data"

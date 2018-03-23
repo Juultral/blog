@@ -21,9 +21,9 @@ class Navbar extends Component {
             </div>
             <div className="links col-4 ml-auto">
               <div className="menu">
-                <Link className="btn btn-secondary mr-3" to="/">
+                <a className="btn btn-secondary mr-3" href="/">
                   Home
-                </Link>
+                </a>
                 <Link className="btn btn-secondary" to="/new_post">
                   New Post
                 </Link>

@@ -19,7 +19,7 @@ class LogIn extends Component {
         this.state.users[i].password === pass
       ) {
         logIn = false;
-        localStorage.setItem("log_in", true);
+        localStorage.setItem("log_in", this.state.users[i]._id);
         history.push("/");
         history.go("/");
       }
