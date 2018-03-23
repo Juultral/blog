@@ -1,0 +1,15 @@
+accounts:
+  login : ion@mail.ru
+  password : 123
+
+  login : admin@admin.com
+  password : 1qw2we3er
+
+  login : leahu-ion@mail.ru
+  password : 123
+
+URL'S
+  http://localhost:3000/
+  http://localhost:3000/new_post
+  http://localhost:3000/log_in
+  http://localhost:3000/sign_up
