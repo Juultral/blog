@@ -6,21 +6,13 @@ import { Link } from "react-router-dom";
 import "./detail_post.css";
 import "../bootstrap.css";
 import "../Post/post.css";
+import { connect } from "react-redux";
+import { fullPost } from "../actions/postActions";
 
 class DetailPost extends Component {
-  state = {
-    post: []
-  };
-  componentDidMount() {
+  componentWillMount() {
     window.scrollTo(0, 0);
-    axios
-      .get(`/api/posts/${this.props.match.params.id}`)
-      .then(response => {
-        this.setState({ post: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.props.detailPost(this.props.match.params.id);
   }
   deletePost = () => {
     axios
@@ -33,6 +25,9 @@ class DetailPost extends Component {
     history.go("/");
   };
   render() {
+    {
+      console.log(this.props.store.posts);
+    }
     return (
       <div className="row mr-0 ml-auto mb-2">
         <div id="detail_post" className="col-sm-10 mx-auto">
@@ -40,7 +35,7 @@ class DetailPost extends Component {
             <div className="post_title">
               <div className="row">
                 <div className="col-9 mx-auto">
-                  <h4 className="mx-auto">{this.state.post.title}</h4>
+                  <h4 className="mx-auto">{this.props.store.posts.title}</h4>
                 </div>
                 <div className="col-2 float-right mx-auto">
                   <button
@@ -54,7 +49,7 @@ class DetailPost extends Component {
                   </button>
                   <Link
                     className="btn btn-info float-right mr-2"
-                    to={`/edit/${this.state.post._id}`}
+                    to={`/edit/${this.props.store.posts._id}`}
                   >
                     Edit
                   </Link>
@@ -85,7 +80,7 @@ class DetailPost extends Component {
                 </button>
               </div>
               <img
-                src={this.state.post.image}
+                src={this.props.store.posts.image}
                 alt="img_content"
                 width="100%"
                 height="auto"
@@ -94,13 +89,13 @@ class DetailPost extends Component {
             <br />
             <div className="post_title">
               <label>
-                {this.state.post.description}
+                {this.props.store.posts.description}
                 <b>
                   <p
                     className="ml-auto"
                     style={{ margin: "10px", fontSize: "12px" }}
                   >
-                    Posted on : {this.state.post.date}
+                    Posted on : {this.props.store.posts.date}
                   </p>
                 </b>
               </label>
@@ -114,4 +109,13 @@ class DetailPost extends Component {
 DetailPost.propTypes = {
   post: PropTypes.array
 };
-export default DetailPost;
+export default connect(
+  state => ({
+    store: state
+  }),
+  dispatch => ({
+    detailPost: e => {
+      dispatch(fullPost(e));
+    }
+  })
+)(DetailPost);

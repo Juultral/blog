@@ -10,6 +10,7 @@ import NotFound from "./Page_404/NotFound";
 import SignUp from "./SignUp/SignUp";
 import LogIn from "./LogIn/LogIn";
 import NotLogIn from "./Page_404/NotLogIn";
+import { connect } from "react-redux";
 import "./App.css";
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
           <div className="app">
             <Navbar />
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" store={this.props} component={Home} />
               <Route path="/posts/:id" component={DetailPost} />
               <Route path="/edit/:id" component={Edit} />
               <Route path="/new_post" component={NewPost} />

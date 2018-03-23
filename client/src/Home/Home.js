@@ -4,6 +4,8 @@ import "../bootstrap.css";
 import "./home.css";
 import Post from "../Post/Post";
 import Search from "../Search/Search";
+import { connect } from "react-redux";
+import { fetchPosts } from "../actions/postActions";
 
 class Home extends Component {
   serch_result = {
@@ -12,8 +14,7 @@ class Home extends Component {
   state = {
     show_find: false,
     result: ["Nothing was found !!!"],
-    id_rez: [],
-    posts: []
+    id_rez: []
   };
   show_result = e => {
     let rezultate = [];
@@ -41,24 +42,18 @@ class Home extends Component {
     }
     this.setState({ show_find: true, result: rezultate, id_rez: id_rezultate });
   };
-  componentDidMount() {
-    axios
-      .get("/api/posts")
-      .then(response => {
-        this.setState({ posts: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  componentWillMount() {
+    this.props.loadPosts();
   }
-
   render() {
     return (
       <div className="row" style={{ margin: "0px" }}>
         <div className="container ml-auto mr-0">
           <div className="col-12 home">
-            {this.state.posts.map(post => <Post {...post} key={post._id} />)}
-            {this.state.posts.length === 0 ? (
+            {this.props.store.posts.map(post => (
+              <Post {...post} key={post._id} />
+            ))}
+            {this.props.store.length === 0 ? (
               <div className="footer_bottom">
                 <h1>Nothing to show you</h1>
               </div>
@@ -94,4 +89,16 @@ class Home extends Component {
     );
   }
 }
-export default Home;
+export default connect(
+  state => ({
+    store: state
+  }),
+  dispatch => ({
+    addPost: post => {
+      dispatch({ type: "ADD_POST", paylod: post });
+    },
+    loadPosts: () => {
+      dispatch(fetchPosts());
+    }
+  })
+)(Home);
